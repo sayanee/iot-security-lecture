@@ -1,22 +1,15 @@
 {
   "name": "reveal.js",
   "version": "3.4.1",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://lab.hakim.se/reveal-js",
-  "subdomain": "revealjs",
-  "main": "js/reveal.js",
+  "description": "IoT Security lecture slides",
+  "homepage": "https://sayan.ee/iot-security-lecture/",
+  "main": "index.html",
   "scripts": {
-    "test": "grunt test",
     "start": "grunt serve"
-  },
-  "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/sayanee/iot-security-lecture.git"
   },
   "engines": {
     "node": ">=4.0.0"
