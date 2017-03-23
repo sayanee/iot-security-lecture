@@ -43,6 +43,27 @@
 			</section>
 
 			<section>
+				<h2>Fun with IoT</h2>
+                                <pre><code class="hlruby">[...]
+require 'net/telnet'
+
+coffee_machine_ip = '10.10.42.42'
+password = '1234'
+password_prompt = 'Password: '
+delay_before_brew = 17
+delay = 24
+
+sleep delay_before_brew
+con = Net::Telnet.new('Host' => coffee_machine_ip)
+con.cmd('String' => password, 'Match' => /#{password_prompt}/)
+con.cmd('sys brew')
+sleep delay
+con.cmd('sys pour')
+con.close</code></pre>
+                                <a href="https://github.com/NARKOZ/hacker-scripts/blob/master/fucking_coffee.rb">https://github.com/NARKOZ/hacker-scripts/</a>
+			</section>
+
+			<section>
 				<h1>Reveal.js</h1>
 				<h3>The HTML Presentation Framework</h3>
 				<p>
