@@ -1,0 +1,23 @@
+{
+  "name": "http-server",
+  "version": "1.0.0",
+  "description": "http-server to show insecure IoT web pages",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server"
+  },
+  "keywords": [
+    "iot",
+    "http",
+    "web"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "path": "^0.12.7",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0"
+  }
+}
