@@ -6,7 +6,7 @@
 
 1. Install dependancies with `npm i`
 1. Generate new certificates
-  - Ensure `Common Name` is `localhost` or another domain name E.g. `secure.local`
+    - Ensure `Common Name` is `localhost` or another domain name E.g. `secure.local`
 
     ```sh
     $ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365
@@ -35,13 +35,13 @@
 1. Add the certificate to KeyChain
 1. Ensure it is `Always Trust`
 
-  ![](img/always-trust.png)
+    ![](img/always-trust.png)
 1. Ensure that common Name on certificate generation and domain name is `localhost`
 
-  ![](img/certificate.png)
+    ![](img/certificate.png)
 1. Start the servers on host machine to test
 
-  ```sh
-  npm start
-  ```
+    ```sh
+    npm start
+    ```
 1. Visit <localhost:4000> and <https://localhost:5000>
