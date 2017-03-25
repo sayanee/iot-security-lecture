@@ -4,11 +4,11 @@
 
 ## Getting started
 
-> Test out the http servers on your laptop (macbook) before transferring to a Raspberry PI
+> Test out the [http and https servers on your laptop](http://blog.mgechev.com/2014/02/19/create-https-tls-ssl-application-with-express-nodejs/) (macbook) before transferring to a Raspberry PI
 
 1. Install dependancies with `npm i`
 1. Generate new certificates `key.pem` and `cert.pem`
-    - Ensure `Common Name` is `localhost` or another domain name E.g. `secure.local`
+    - Ensure `Common Name` is `localhost` or another domain name E.g. `lamp.local`
 
         ```sh
         $ openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365
@@ -32,14 +32,19 @@
         Locality Name (eg, city) []:Singapore
         Organization Name (eg, company) [Internet Widgits Pty Ltd]:IoT security demo
         Organizational Unit Name (eg, section) []:
-        Common Name (e.g. server FQDN or YOUR name) []:localhost
+        Common Name (e.g. server FQDN or YOUR name) []:lamp.local
         Email Address []:sayanee@gmail.com
         ```
+1. Remove passphrase
+
+    ```sh
+    openssl rsa -in key.pem -out newkey.pem && mv newkey.pem key.pem
+    ```
 1. Add the certificates to KeyChain app
 1. Ensure it is `Always Trust`
 
     ![](img/always-trust.png)
-1. Ensure that common Name on certificate generation and domain name is `localhost`
+1. Ensure that common Name on certificate generation and domain name is `lamp.local`
 
     ![](img/certificate.png)
 1. Start the servers on host machine to test
@@ -47,9 +52,12 @@
     ```sh
     npm start
     ```
-1. Visit <http://localhost:4000> and <https://localhost:5000> in browser
+1. Visit <http://localhost> and <https://localhost> in browser
+    - for `https`, accept the certificate
 
-## Transfer code to RaspberryPI
+## RaspberryPI
+
+### Transfer code
 
 1. Power on the RaspberryPI with Ethernet connected to the same router as host machine
 1. Find the IP address of the host machine with Network Preferences
@@ -88,4 +96,63 @@
     drwxr-xr-x 5 pi   pi   4096 Mar 22 13:27 .nvm
     -rw-r--r-- 1 pi   pi    675 Mar  3 15:27 .profile
     drwxr-xr-x 4 pi   pi   4096 Mar 25 07:21 demo
+    ```
+
+### Setup DNS
+
+1. Install dependency
+
+    ```sh
+    sudo apt-get install avahi-daemon
+    ```
+1. Change the hostname
+
+    ```sh
+    sudo nano /etc/hostname
+    # change content to lamp
+    ```
+1. Restart DNS daemon
+
+    ```sh
+    sudo /etc/init.d/avahi-daemon restart
+    ```
+1. Reboot RaspberryPI and SHH in again
+
+    ```sh
+    sudo reboot
+    ssh pi@lamp.local # password: raspberry
+    ```
+1. Start the node server
+
+    ```sh
+    sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node server.js
+    ```
+1. Check <http://lamp.local> and <https://lamp.local> on the host machine browser
+
+### Bootup script
+
+> Run web server on [RaspberryPI on boot up](https://www.raspberrypi.org/documentation/linux/usage/rc-local.md)
+
+1. Edit file `rc.local`
+
+    ```sh
+    sudo nano /etc/rc.local
+    ```
+1. Append to `rc.local` the application server
+
+    ```sh
+    sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node /home/pi/demo/server.js &
+
+    exit 0
+    ```
+
+### Connect to WiFi
+
+1. Append to file `/etc/wpa_supplicant/wpa_supplicant.conf`
+
+    ```sh
+    network={
+        ssid="ISSS614"
+        psk="smu2017iss"
+    }
     ```
