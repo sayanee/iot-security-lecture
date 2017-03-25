@@ -5,7 +5,7 @@
 ## Getting started
 
 1. Install dependancies with `npm i`
-- Generate new certificates
+1. Generate new certificates
   - Ensure `Common Name` is `localhost` or another domain name E.g. `secure.local`
 
   ```sh
@@ -32,16 +32,16 @@
   Common Name (e.g. server FQDN or YOUR name) []:localhost
   Email Address []:sayanee@gmail.com
   ```
-- Add the certificate to KeyChain
-- Ensure it is `Always Trust`
+1. Add the certificate to KeyChain
+1. Ensure it is `Always Trust`
 
   ![](img/always-trust.png)
-- Ensure that common Name on certificate generation and domain name is `localhost`
+1. Ensure that common Name on certificate generation and domain name is `localhost`
 
   ![](img/certificate.png)
-- Start the servers on host machine to test
+1. Start the servers on host machine to test
 
   ```sh
   npm start
   ```
-- Visit <localhost:4000> and <https://localhost:5000>
+1. Visit <localhost:4000> and <https://localhost:5000>
