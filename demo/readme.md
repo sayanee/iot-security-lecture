@@ -105,11 +105,24 @@
     ```sh
     sudo apt-get install avahi-daemon
     ```
-1. Change the hostname
+1. Change the `hostname`
 
     ```sh
-    sudo nano /etc/hostname
-    # change content to lamp
+    sudo cat /etc/hostname
+
+    lamp
+    ```
+1. Change `hosts`
+
+    ```sh
+    sudo cat /etc/hosts
+
+    127.0.0.1	localhost lamp.local
+    ::1		localhost ip6-localhost ip6-loopback
+    ff02::1		ip6-allnodes
+    ff02::2		ip6-allrouters
+
+    127.0.1.1	lamp
     ```
 1. Restart DNS daemon
 
