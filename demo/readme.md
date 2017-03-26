@@ -61,7 +61,7 @@
 
 ### Transfer code
 
-1. Burn an SD card with a non-GUI Raspbian OS
+1. Burn an SD card with a [non-GUI Raspbian OS](https://www.raspberrypi.org/downloads/)
 1. Add an empty file called `ssh` in the SD card to [enable SSH in the headless RaspberryPI](https://www.raspberrypi.org/documentation/remote-access/ssh/)
 
     ![](img/enable-ssh.png)
@@ -117,14 +117,14 @@
     ```sh
     sudo apt-get install avahi-daemon
     ```
-1. Change the `hostname`
+1. Change the `hostname` to add `lamp`, an IoT device in the network
 
     ```sh
     sudo cat /etc/hostname
 
     lamp
     ```
-1. Change `hosts`
+1. Change `hosts` to add `lamp.local`
 
     ```sh
     sudo cat /etc/hosts
@@ -141,7 +141,7 @@
     ```sh
     sudo /etc/init.d/avahi-daemon restart
     ```
-1. Reboot RaspberryPI and SHH in again
+1. Reboot RaspberryPI and SSH in again
 
     ```sh
     sudo reboot
@@ -152,7 +152,7 @@
     ```sh
     sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node server.js
     ```
-1. Check <http://lamp.local> and <https://lamp.local> on the host machine browser
+1. Check <http://lamp.local> and <https://lamp.local> on the host machine browser or any other mobile device in the same network
 
 ### Bootup script
 
@@ -184,8 +184,8 @@
 
 ### Sniff packets
 
-1. Setup another RaspberryPI with headless Raspbian OS
-1. Change the `hostname` to indicate `oven`
+1. Setup another RaspberryPI with [headless Raspbian OS](https://www.raspberrypi.org/downloads/)
+1. Change the `hostname` to indicate `oven`, another IoT device in the same network
 
     ```sh
     sudo cat /etc/hostname
