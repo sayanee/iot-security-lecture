@@ -228,19 +228,11 @@
     ```sh
     sudo apt-get install --yes tshark
     ```
-1. Install [aircrack-ng](http://blog.petrilopia.net/linux/raspberry-pi-install-aircrackng-suite/)
-1. Slot in the [TP Link WiFi dongle](http://www.tp-link.com/us/download/TL-WN722N.html) in the RaspberryPI
-1. [Connect to WiFi](#connect-to-wifi)
-1. Ensure it has the `wlan0` interface with an IP address
 
-    ```sh
-    $ ifconfig wlan0
-    wlan0     Link encap:Ethernet  HWaddr 18:a6:f7:18:bc:82
-          inet addr:192.168.0.102  Bcast:255.255.255.255  Mask:255.255.255.0
-          inet6 addr: fe80::3f06:99a0:da99:174c/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:118 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:85 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:36786 (35.9 KiB)  TX bytes:14784 (14.4 KiB)
-    ```
+    Ensure `non super users are able to capture packets`
+
+    ![](img/configure-wireshark.png)
+
+
+1. Reboot
+1. Try `tshark -i wlan0 -Y http`
