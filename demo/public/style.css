@@ -6,11 +6,6 @@ h1 { text-align: center; margin: 1em 0; }
 label, input { width: 80%; display: block; margin: .5em auto; }
 input { font-size: 1.5em; padding: .5em; }
 [type=submit], a { font-size: 1.5em; padding: .5em; background-color: teal; border: none; color: white; }
-a {
-  display: block;
-  margin: 1em 0;
-  text-align: center;
-  text-decoration: none;
-}
+a { display: block; margin: 1em 0; text-align: center; text-decoration: none; }
 [type=submit]:active, [type=submit]:hover, a:hover, a:active { background: darkslategray; cursor: pointer; }
 @media only screen and (max-width: 400px) { .content { width: 95%; } }
