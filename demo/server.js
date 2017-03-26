@@ -50,6 +50,6 @@ appSecure.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'))
 })
 
-appSecure.get('/action', function(req, res) {
+appSecure.post('/action', function(req, res) {
   res.sendFile(path.join(__dirname + '/action.html'))
 })
