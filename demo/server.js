@@ -46,7 +46,7 @@ if (isMacBook()) {
 appInsecure.use(bodyParser.urlencoded({
   extended: true
 }))
-appInsecure.use(express.static('public'))
+appInsecure.use(express.static(path.join(__dirname + '/public')))
 
 appInsecure.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'))
@@ -88,7 +88,7 @@ appInsecure.get('/off', function(req, res) {
 appSecure.use(bodyParser.urlencoded({
   extended: true
 }))
-appSecure.use(express.static('public'))
+appSecure.use(express.static(path.join(__dirname + '/public')))
 
 https.createServer({
   key: fs.readFileSync(path.join(__dirname + '/key.pem')),
