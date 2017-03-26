@@ -83,7 +83,7 @@
 
     Or Just view the DHCP client list from the router
 
-    ![](img/dhcp-client.list.png)
+    ![](img/dhcp-client-list.png)
 1. Secure copy the demo code to RaspberryPI
 
     ```sh
