@@ -2,6 +2,15 @@
 
 > Demo of a secure and insecure web page
 
+## Table of Contents
+
+1. [Getting started](#getting-started)
+1. [Transfer code](#transfer-code)
+1. [Setup DNS](#setup-dns)
+1. [Bootup script](#bootup-script)
+1. [Connect to WiFi](#connect-to-wifi)
+1. [Sniff packets](#sniff-packets)
+
 ## Getting started
 
 > Test out the [http and https servers on your laptop](http://blog.mgechev.com/2014/02/19/create-https-tls-ssl-application-with-express-nodejs/) (macbook) before transferring to a Raspberry PI
@@ -57,9 +66,7 @@
 
         ![](img/https.png)
 
-## RaspberryPI
-
-### Transfer code
+## Transfer code
 
 1. Burn an SD card with a [non-GUI Raspbian OS](https://www.raspberrypi.org/downloads/)
 1. Add an empty file called `ssh` in the SD card to [enable SSH in the headless RaspberryPI](https://www.raspberrypi.org/documentation/remote-access/ssh/)
@@ -110,7 +117,7 @@
     drwxr-xr-x 4 pi   pi   4096 Mar 25 07:21 demo
     ```
 
-### Setup DNS
+## Setup DNS
 
 1. Install dependency
 
@@ -154,7 +161,7 @@
     ```
 1. Check <http://lamp.local> and <https://lamp.local> on the host machine browser or any other mobile device in the same network
 
-### Bootup script
+## Bootup script
 
 > Run web server on [RaspberryPI on boot up](https://www.raspberrypi.org/documentation/linux/usage/rc-local.md)
 
@@ -163,7 +170,7 @@
     ```sh
     sudo nano /etc/rc.local
     ```
-1. Append to `rc.local` the application server
+1. Append to `rc.local` the application server with `exit 0` as the last line
 
     ```sh
     sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node /home/pi/demo/server.js &
@@ -171,8 +178,9 @@
     exit 0
     ```
 
-### Connect to WiFi
+## Connect to WiFi
 
+1. [Connect to WiFi on RaspberryPI](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
 1. Append to file `/etc/wpa_supplicant/wpa_supplicant.conf`
 
     ```sh
@@ -181,8 +189,14 @@
         psk="smu2017iss"
     }
     ```
+1. Restart `wlan` interface if required
 
-### Sniff packets
+    ```sh
+    sudo ifconfig wlan0 down
+    sudo ifconfig wlan0 up
+    ```
+
+## Sniff packets
 
 1. Setup another RaspberryPI with [headless Raspbian OS](https://www.raspberrypi.org/downloads/)
 1. Change the `hostname` to indicate `oven`, another IoT device in the same network
@@ -215,3 +229,18 @@
     sudo apt-get install --yes tshark
     ```
 1. Install [aircrack-ng](http://blog.petrilopia.net/linux/raspberry-pi-install-aircrackng-suite/)
+1. Slot in the [TP Link WiFi dongle](http://www.tp-link.com/us/download/TL-WN722N.html) in the RaspberryPI
+1. [Connect to WiFi](#connect-to-wifi)
+1. Ensure it has the `wlan0` interface with an IP address
+
+    ```sh
+    $ ifconfig wlan0
+    wlan0     Link encap:Ethernet  HWaddr 18:a6:f7:18:bc:82
+          inet addr:192.168.0.102  Bcast:255.255.255.255  Mask:255.255.255.0
+          inet6 addr: fe80::3f06:99a0:da99:174c/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:118 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:85 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:36786 (35.9 KiB)  TX bytes:14784 (14.4 KiB)
+    ```
