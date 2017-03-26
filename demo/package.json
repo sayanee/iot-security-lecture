@@ -5,7 +5,8 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-    "start": "sudo node server.js"
+    "start": "sudo node server.js",
+    "pi": "sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node /home/pi/demo/server.js >> ~/lamp.log"
   },
   "keywords": [
     "iot",
@@ -19,7 +20,7 @@
     "express": "^4.15.2",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
-    "path": "^0.12.7",
-    "rpi-gpio": "^0.7.0"
+    "onoff": "^1.1.2",
+    "path": "^0.12.7"
   }
 }

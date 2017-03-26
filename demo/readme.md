@@ -116,6 +116,12 @@
     -rw-r--r-- 1 pi   pi    675 Mar  3 15:27 .profile
     drwxr-xr-x 4 pi   pi   4096 Mar 25 07:21 demo
     ```
+1. Re-install `node_modules` for `arm` architecture
+
+    ```sh
+    rm -rf node_modules
+    npm i
+    ```
 
 ## Setup DNS
 
@@ -173,7 +179,7 @@
 1. Append to `rc.local` the application server with `exit 0` as the last line
 
     ```sh
-    sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node /home/pi/demo/server.js &
+    sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node /home/pi/demo/server.js >> /home/pi/lamp.log 2>&1 &
 
     exit 0
     ```

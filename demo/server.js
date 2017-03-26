@@ -10,12 +10,29 @@ var appSecure = express()
 var appInsecurePort = 80
 var appSecurePort = 443
 
+var Gpio
+var led
+
+function ledON() {
+  return led.writeSync(1)
+}
+
+function ledOFF() {
+  return led.writeSync(0)
+}
+
 function isMacBook() {
   return os.arch() === 'x64' ? true : false
 }
 
 function isRPi() {
   return os.arch() === 'arm' ? true : false
+}
+
+console.log(new Date() + ' INIT SERVER')
+if (isRPi()) {
+  Gpio = require('onoff').Gpio
+  led = new Gpio(18, 'out')
 }
 
 if (isMacBook()) {
@@ -29,23 +46,20 @@ if (isMacBook()) {
 // insecure app
 appInsecure.use(bodyParser.urlencoded({
   extended: true
-}));
+}))
 
 appInsecure.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'))
 }).listen(appInsecurePort, function() {
   if (isMacBook()) {
-    console.log('HTTP page served at http://localhost:' + appInsecurePort)
+    console.log(new Date() + ' HTTP page served at http://localhost:' + appInsecurePort)
   } else if (isRPi()) {
-    console.log('HTTP page served at http://lamp.local')
+    console.log(new Date() + ' HTTP page served at http://lamp.local')
   }
 })
 
 appInsecure.post('/action', function(req, res) {
-  console.log('********************************')
-  console.log(req.body.username)
-  console.log(req.body.password)
-  console.log('********************************')
+  console.log(new Date() + ' Username: ' + req.body.username + ', Password: ' + req.body.password)
   res.sendFile(path.join(__dirname + '/action.html'))
 })
 
@@ -54,12 +68,19 @@ appInsecure.get('/action', function(req, res) {
 })
 
 appInsecure.get('/on', function(req, res) {
-  console.log('ON the lamp!')
+  console.log(new Date() + ' Lamp is ON')
+  if (isRPi()) {
+    ledON()
+  }
   res.redirect('/action')
 })
 
 appInsecure.get('/off', function(req, res) {
-  console.log('OFF the lamp!')
+  console.log(new Date() + ' Lamp is OFF')
+  if (isRPi()) {
+    ledOFF()
+  }
+
   res.redirect('/action')
 })
 
@@ -73,9 +94,9 @@ https.createServer({
   cert: fs.readFileSync(path.join(__dirname + '/cert.pem'))
 }, appSecure).listen(appSecurePort, function() {
   if (isMacBook()) {
-    console.log('HTTPS page served at https://localhost:' + appSecurePort)
+    console.log(new Date() + ' HTTPS page served at https://localhost:' + appSecurePort)
   } else if (isRPi()) {
-    console.log('HTTP page served at https://lamp.local')
+    console.log(new Date() + ' HTTPS page served at https://lamp.local')
   }
 })
 
@@ -84,10 +105,7 @@ appSecure.get('/', function(req, res) {
 })
 
 appSecure.post('/action', function(req, res) {
-  console.log('********************************')
-  console.log(req.body.username)
-  console.log(req.body.password)
-  console.log('********************************')
+  console.log(new Date() + ' Username: ' + req.body.username + ', Password: ' + req.body.password)
   res.sendFile(path.join(__dirname + '/action.html'))
 })
 
@@ -96,11 +114,19 @@ appSecure.get('/action', function(req, res) {
 })
 
 appSecure.get('/on', function(req, res) {
-  console.log('ON the lamp!')
+  console.log(new Date() + ' Lamp is ON')
+  if (isRPi()) {
+    ledON()
+  }
+
   res.redirect('/action')
 })
 
 appSecure.get('/off', function(req, res) {
-  console.log('OFF the lamp!')
+  console.log(new Date() + ' Lamp is OFF')
+  if (isRPi()) {
+    ledOFF()
+  }
+
   res.redirect('/action')
 })
