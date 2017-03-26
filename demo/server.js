@@ -3,6 +3,7 @@ var fs = require('fs')
 var express = require('express')
 var https = require('https')
 var os = require('os')
+var bodyParser = require('body-parser')
 
 var appInsecure = express()
 var appSecure = express()
@@ -25,6 +26,11 @@ if (isMacBook()) {
   appSecurePort = 443
 }
 
+// insecure app
+appInsecure.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 appInsecure.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'))
 }).listen(appInsecurePort, function() {
@@ -34,6 +40,33 @@ appInsecure.get('/', function(req, res) {
     console.log('HTTP page served at http://lamp.local')
   }
 })
+
+appInsecure.post('/action', function(req, res) {
+  console.log('********************************')
+  console.log(req.body.username)
+  console.log(req.body.password)
+  console.log('********************************')
+  res.sendFile(path.join(__dirname + '/action.html'))
+})
+
+appInsecure.get('/action', function(req, res) {
+  res.sendFile(path.join(__dirname + '/action.html'))
+})
+
+appInsecure.get('/on', function(req, res) {
+  console.log('ON the lamp!')
+  res.redirect('/action')
+})
+
+appInsecure.get('/off', function(req, res) {
+  console.log('OFF the lamp!')
+  res.redirect('/action')
+})
+
+// secure app
+appSecure.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 https.createServer({
   key: fs.readFileSync(path.join(__dirname + '/key.pem')),
@@ -51,5 +84,23 @@ appSecure.get('/', function(req, res) {
 })
 
 appSecure.post('/action', function(req, res) {
+  console.log('********************************')
+  console.log(req.body.username)
+  console.log(req.body.password)
+  console.log('********************************')
   res.sendFile(path.join(__dirname + '/action.html'))
+})
+
+appSecure.get('/action', function(req, res) {
+  res.sendFile(path.join(__dirname + '/action.html'))
+})
+
+appSecure.get('/on', function(req, res) {
+  console.log('ON the lamp!')
+  res.redirect('/action')
+})
+
+appSecure.get('/off', function(req, res) {
+  console.log('OFF the lamp!')
+  res.redirect('/action')
 })

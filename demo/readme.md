@@ -185,8 +185,8 @@
 
     ```sh
     network={
-        ssid="ISSS614"
-        psk="smu2017iss"
+      ssid="ISSS614"
+      key_mgmt=NONE
     }
     ```
 1. Restart `wlan` interface if required

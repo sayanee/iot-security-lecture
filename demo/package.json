@@ -15,9 +15,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "path": "^0.12.7",
     "fs": "0.0.1-security",
-    "https": "^1.0.0"
+    "https": "^1.0.0",
+    "path": "^0.12.7",
+    "rpi-gpio": "^0.7.0"
   }
 }
