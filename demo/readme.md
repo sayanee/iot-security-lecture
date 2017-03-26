@@ -59,6 +59,8 @@
 
 ### Transfer code
 
+1. Burn an SD card with a non-GUI Raspbian OS
+1. Add an empty file called `ssh` in the SD card to [enable SSH in the headless RaspberryPI](https://www.raspberrypi.org/documentation/remote-access/ssh/)
 1. Power on the RaspberryPI with Ethernet connected to the same router as host machine
 1. Find the IP address of the host machine with Network Preferences
 1. Find out the IP address of the RaspberryPI in the same network
