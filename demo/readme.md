@@ -52,8 +52,10 @@
     ```sh
     npm start
     ```
-1. Visit <http://localhost> and <https://localhost> in browser
+1. Visit <http://localhost:4000> and <https://localhost:5000> in browser
     - for `https`, accept the certificate
+
+        ![](img/https.png)
 
 ## RaspberryPI
 
@@ -61,8 +63,12 @@
 
 1. Burn an SD card with a non-GUI Raspbian OS
 1. Add an empty file called `ssh` in the SD card to [enable SSH in the headless RaspberryPI](https://www.raspberrypi.org/documentation/remote-access/ssh/)
+
+    ![](img/enable-ssh.png)
 1. Power on the RaspberryPI with Ethernet connected to the same router as host machine
 1. Find the IP address of the host machine with Network Preferences
+
+    ![](img/network.png)
 1. Find out the IP address of the RaspberryPI in the same network
 
     ```sh
@@ -74,6 +80,10 @@
     PORT   STATE SERVICE
     22/tcp open  ssh
     ```
+
+    Or Just view the DHCP client list from the router
+
+    ![](img/dhcp-client.list.png)
 1. Secure copy the demo code to RaspberryPI
 
     ```sh
@@ -171,3 +181,37 @@
         psk="smu2017iss"
     }
     ```
+
+### Sniff packets
+
+1. Setup another RaspberryPI with headless Raspbian OS
+1. Change the `hostname` to indicate `oven`
+
+    ```sh
+    sudo cat /etc/hostname
+
+    oven
+    ```
+1. Change `hosts` to add `oven`
+
+    ```sh
+    sudo cat /etc/hosts
+
+    127.0.0.1	localhost oven.local
+    ::1		localhost ip6-localhost ip6-loopback
+    ff02::1		ip6-allnodes
+    ff02::2		ip6-allrouters
+
+    127.0.1.1	oven
+    ```
+1. Update and upgrade packages
+
+    ```sh
+    sudo apt-get update && sudo apt-get upgrade
+    ```
+1. Install `tshark`
+
+    ```sh
+    sudo apt-get install --yes tshark
+    ```
+1. Install [aircrack-ng](http://blog.petrilopia.net/linux/raspberry-pi-install-aircrackng-suite/)
