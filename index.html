@@ -269,7 +269,7 @@ con.close</code></pre>
 			</section>
 
 			<section class="center">
-				<h1>Adventures with <br>😴 a lamp 💡<br>😈 an oven 📺<br>🙈 a router 📻</h1>
+				<h1>Adventures with <br><span class="fragment" data-fragment-index="1">😴</span> a lamp 💡<br><span class="fragment" data-fragment-index="1">😈</span> an oven 📺<br><span class="fragment" data-fragment-index="1">🙈</span> a router 📻</h1>
 			</section>
 
 			<section>
@@ -294,15 +294,15 @@ con.close</code></pre>
 				<h1>3 demos</h1>
 				<img src="images/demo.png" alt="Demo setup" height=500px style="float:left;">
 
-				<h3>Questions to ask 🤔</h3>
-				<p>What's the insecurity?</p>
-				<p>What's the fix?</p>
-				<p>Why should we care?</p>
-				<hr>
-				<h3>People 🕵🏻👩🏾‍🔧👨🏻‍💻👩🏼‍🏭</h3>
-				<p>security researcher</p>
-				<p>home owner</p>
-				<p>engineer / product manager</p>
+				<h3 class="fragment" data-fragment-index="1">Questions to ask 🤔</h3>
+				<p class="fragment" data-fragment-index="1">What's the insecurity?</p>
+				<p class="fragment" data-fragment-index="1">What's the fix?</p>
+				<p class="fragment" data-fragment-index="1">Why should we care?</p>
+				<hr class="fragment" data-fragment-index="2">
+				<h3 class="fragment" data-fragment-index="2">People 🕵🏻👩🏾‍🔧👨🏻‍💻👩🏼‍🏭</h3>
+				<p class="fragment" data-fragment-index="2">security researcher</p>
+				<p class="fragment" data-fragment-index="2">home owner</p>
+				<p class="fragment" data-fragment-index="2">engineer / product manager</p>
 			</section>
 
 			<section>
@@ -329,16 +329,16 @@ con.close</code></pre>
 					<li>Change router's default password</li>
 					<li>Use devices on a separate home network</li>
 				</ul>
-				<p><strong style="background:red;">TODO: list of wifi security tips</strong></p>
+				<p class="fragment" data-fragment-index="1"><strong style="background:red;">TODO: list of wifi security tips</strong></p>
 			</section>
 
 			<section>
 				<h2>Demo A: Why should we care?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>cannot rely on device owner's network</li>
 				</ul>
 
-				<img src="images/casestudy1.png" alt="WeMo baby monitor" height=700px>
+				<img src="images/casestudy1.png" alt="WeMo baby monitor" height=700px class="fragment" data-fragment-index="1">
 			</section>
 
 			<section>
@@ -352,19 +352,19 @@ con.close</code></pre>
 
 			<section>
 				<h2>Demo B: What's the insecurity?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>username and password are send over clear text</li>
 				</ul>
 
-				<img src="images/open.png" alt="">
+				<img src="images/open.png" alt="" class="fragment" data-fragment-index="1">
 			</section>
 
 			<section>
 				<h2>Demo B: What's the fix?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>use TLS / HTTPS</li>
 				</ul>
-				<img src="images/https.png" alt="use HTTPS / TLS">
+				<img src="images/https.png" alt="use HTTPS / TLS " class="fragment" data-fragment-index="1">
 			</section>
 
 			<section>
@@ -385,37 +385,37 @@ con.close</code></pre>
 
 			<section>
 				<h2>Demo C: What's the insecurity?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>default username and password</li>
 					<li>full control of the device</li>
 				</ul>
 				<p></p>
-				<pre><code class="bash">#!/bin/bash
+				<pre class="fragment" data-fragment-index="1"><code class="bash">#!/bin/bash
 
 while true; do
   echo 0 > /sys/class/gpio/gpio18/value
   sleep 5
 done
 				</code></pre>
-				<img src="images/blackout.png" height=400px style="float:left;">
-				<img src="images/lightbulb.png" height=560px>
+				<img src="images/blackout.png" height=400px style="float:left;" class="fragment" data-fragment-index="2">
+				<img src="images/lightbulb.png" height=560px class="fragment" data-fragment-index="2">
 			</section>
 
 			<section>
 				<h2>Demo C: What's the fix?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>prompt users to change default login</li>
 					<li>have a mechanism to remotely update</li>
 				</ul>
-				<img src="images/default-password.png" alt="">
+				<img src="images/default-password.png" alt="" class="fragment" data-fragment-index="1">
 			</section>
 
 			<section>
 				<h2>Demo C: Why should we care?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>physical infrastructure compromised</li>
 				</ul>
-				<img src="images/casestudy3.png" height=800px>
+				<img src="images/casestudy3.png" height=800px class="fragment" data-fragment-index="1">
 			</section>
 
 			<section>
