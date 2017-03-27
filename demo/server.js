@@ -45,7 +45,7 @@ if (isMacBook()) {
 appInsecure.use(bodyParser.urlencoded({
   extended: true
 }))
-appInsecure.use(express.static('public'))
+appInsecure.use(express.static(path.join(__dirname + '/public')))
 appInsecure.use(cookieParser())
 
 appInsecure.get('/', function(req, res) {
@@ -60,26 +60,26 @@ appInsecure.get('/', function(req, res) {
 })
 
 appInsecure.post('/action', function(req, res) {
-  console.log(new Date() + ' [HTTP] Username: ' + req.body.username + ', Password: ' + req.body.password)
+  console.log(new Date() + ' [HTTP] ' + req.body.username + ' logged in')
   res.cookie('username', req.body.username);
   res.sendFile(path.join(__dirname + '/action.html'))
 })
 
 appInsecure.get('/action', function(req, res) {
-   if (!req.cookies || !req.cookies.username){
+  if (!req.cookies || !req.cookies.username){
     res.redirect('/')
-   }else{
-    res.sendFile(path.join(__dirname + '/action.html'))
-   }
+  } else {
+   res.sendFile(path.join(__dirname + '/action.html'))
+  }
 })
 
 appInsecure.get('/on', function(req, res) {
   if (!req.cookies || !req.cookies.username){
     console.log(req.cookies, req.cookies.username)
     res.redirect('/')
-  }else{
-    console.log(new Date() + ' [HTTP] Lamp is ON')
-    setLED(true);
+  } else {
+    console.log(new Date() + ' [HTTP] ' + req.cookies.username + ' turned ON the lamp')
+    setLED(true)
     res.redirect('/action')
   }
 })
@@ -87,9 +87,9 @@ appInsecure.get('/on', function(req, res) {
 appInsecure.get('/off', function(req, res) {
   if (!req.cookies || !req.cookies.username){
     res.redirect('/')
-  }else{
-    console.log(new Date() + ' [HTTP] Lamp is OFF')
-    setLED(false);
+  } else {
+    console.log(new Date() + ' [HTTP] ' + req.cookies.username + ' turned OFF the lamp')
+    setLED(false)
     res.redirect('/action')
   }
 })
@@ -98,7 +98,7 @@ appInsecure.get('/off', function(req, res) {
 appSecure.use(bodyParser.urlencoded({
   extended: true
 }))
-appSecure.use(express.static('public'))
+appSecure.use(express.static(path.join(__dirname + '/public')))
 appSecure.use(cookieParser())
 
 https.createServer({
@@ -118,7 +118,7 @@ appSecure.get('/', function(req, res) {
 })
 
 appSecure.post('/action', function(req, res) {
-  console.log(new Date() + ' [HTTPS] Username: ' + req.body.username + ', Password: ' + req.body.password)
+  console.log(new Date() + ' [HTTPS] ' + req.body.username + ' logged in')
   res.cookie('username', req.body.username);
   res.sendFile(path.join(__dirname + '/action.html'))
 })
@@ -134,19 +134,19 @@ appSecure.get('/action', function(req, res) {
 appSecure.get('/on', function(req, res) {
   if (!req.cookies || !req.cookies.username){
     res.redirect('/index')
-  }else{
-   console.log(new Date() + ' [HTTPS] Lamp is ON')
-   setLED(true);
-   res.redirect('/action')
- }
+  } else{
+    console.log(new Date() + ' [HTTPS] ' + req.cookies.username + ' turned ON the lamp')
+    setLED(true);
+    res.redirect('/action')
+  }
 })
 
 appSecure.get('/off', function(req, res) {
   if (!req.cookies || !req.cookies.username){
     res.redirect('/index')
-  }else{
-   console.log(new Date() + ' [HTTPS] Lamp is OFF')
-   setLED(false);
-   res.redirect('/action')
+  } else{
+    console.log(new Date() + ' [HTTPS] ' + req.cookies.username + ' turned OFF the lamp')
+    setLED(false);
+    res.redirect('/action')
  }
 })

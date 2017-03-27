@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "sudo node server.js",
-    "pi": "sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node /home/pi/demo/server.js >> ~/lamp.log"
+    "pi": "sudo /home/pi/.nvm/versions/node/v7.7.4/bin/node /home/pi/demo/server.js >> /home/pi/lamp.log"
   },
   "keywords": [
     "iot",
