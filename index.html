@@ -296,8 +296,8 @@ con.close</code></pre>
 
 				<h3 class="fragment" data-fragment-index="1">Questions to ask 🤔</h3>
 				<p class="fragment" data-fragment-index="1">What's the insecurity?</p>
-				<p class="fragment" data-fragment-index="1">What's the fix?</p>
 				<p class="fragment" data-fragment-index="1">Why should we care?</p>
+				<p class="fragment" data-fragment-index="1">What's the fix?</p>
 				<hr class="fragment" data-fragment-index="2">
 				<h3 class="fragment" data-fragment-index="2">People 🕵🏻👩🏾‍🔧👨🏻‍💻👩🏼‍🏭</h3>
 				<p class="fragment" data-fragment-index="2">security researcher</p>
@@ -323,22 +323,22 @@ con.close</code></pre>
 			</section>
 
 			<section>
-				<h2>Demo A: What's the fix?</h2>
-				<ul class="fragment" data-fragment-index="1">
-					<li>Use WPA2 encrypted WiFi</li>
-					<li>Change router's default password</li>
-					<li>Use devices on a separate home network</li>
-				</ul>
-				<p class="fragment" data-fragment-index="1"><strong style="background:red;">TODO: list of wifi security tips</strong></p>
-			</section>
-
-			<section>
 				<h2>Demo A: Why should we care?</h2>
 				<ul class="fragment" data-fragment-index="1">
 					<li>cannot rely on device owner's network</li>
 				</ul>
 
 				<img src="images/casestudy1.png" alt="WeMo baby monitor" height=700px class="fragment" data-fragment-index="1">
+			</section>
+
+			<section>
+				<h2>Demo A: What's the fix?</h2>
+				<ul class="fragment" data-fragment-index="1">
+					<li>Use WPA2 encrypted WiFi</li>
+					<li>Change router's default password</li>
+					<li>Use devices on a separate home network</li>
+				</ul>
+				<img src="images/wifi-tips.png" alt="">
 			</section>
 
 			<section>
@@ -360,19 +360,19 @@ con.close</code></pre>
 			</section>
 
 			<section>
-				<h2>Demo B: What's the fix?</h2>
-				<ul class="fragment" data-fragment-index="1">
-					<li>use TLS / HTTPS</li>
-				</ul>
-				<img src="images/https.png" alt="use HTTPS / TLS " class="fragment" data-fragment-index="1">
-			</section>
-
-			<section>
 				<h2>Demo B: Why should we care?</h2>
 				<ul class="fragment" data-fragment-index="1">
 					<li>private data being sniffed</li>
 				</ul>
 				<img src="images/casestudy2.png" alt="" class="fragment" data-fragment-index="1">
+			</section>
+
+			<section>
+				<h2>Demo B: What's the fix?</h2>
+				<ul class="fragment" data-fragment-index="1">
+					<li>use TLS / HTTPS</li>
+				</ul>
+				<img src="images/https.png" alt="use HTTPS / TLS " class="fragment" data-fragment-index="1">
 			</section>
 
 			<section>
@@ -402,15 +402,6 @@ done
 			</section>
 
 			<section>
-				<h2>Demo C: What's the fix?</h2>
-				<ul class="fragment" data-fragment-index="1">
-					<li>prompt users to change default login</li>
-					<li>have a mechanism to remotely update</li>
-				</ul>
-				<img src="images/default-password.png" alt="" class="fragment" data-fragment-index="1">
-			</section>
-
-			<section>
 				<h2>Demo C: Why should we care?</h2>
 				<ul class="fragment" data-fragment-index="1">
 					<li>physical infrastructure compromised</li>
@@ -419,14 +410,23 @@ done
 			</section>
 
 			<section>
+				<h2>Demo C: What's the fix?</h2>
+				<ul class="fragment" data-fragment-index="1">
+					<li>force users to change default login</li>
+					<li>have a mechanism to remotely update</li>
+				</ul>
+				<img src="images/default-password.png" alt="" class="fragment" data-fragment-index="1">
+			</section>
+
+			<section>
 				<h2>Developing IoT products</h2>
 				<ul>
 					<li>work with security researchers from day 1</li>
-					<li>build a mechanism to remotely patch firmware</li>
+					<li>build a mechanism to remotely update firmware</li>
 					<li>never rely on the security of device's network</li>
 					<li>interoperability is challenging</li>
-					<li>prompt for changing default login</li>
-					<li>use encryption</li>
+					<li>unique default password for every device</li>
+					<li>use state of the art encryption</li>
 					<li>design to limit the scope of damage</li>
 				</ul>
 			</section>
