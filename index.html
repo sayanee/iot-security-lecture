@@ -269,7 +269,7 @@ con.close</code></pre>
 			</section>
 
 			<section class="center">
-				<h1>Adventures with <br>a lamp 💡<br>an oven 📺<br>a router 📻</h1>
+				<h1>Adventures with <br>😴 a lamp 💡<br>😈 an oven 📺<br>🙈 a router 📻</h1>
 			</section>
 
 			<section>
@@ -315,16 +315,21 @@ con.close</code></pre>
 
 			<section>
 				<h2>Demo A: What's the insecurity?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>insecure open WiFi</li>
 				</ul>
-				<hr>
+				<br><br>
+				<img src="images/wifi.png" height=1000px class="fragment" data-fragment-index="1">
+			</section>
+
+			<section>
 				<h2>Demo A: What's the fix?</h2>
-				<ul>
+				<ul class="fragment" data-fragment-index="1">
 					<li>Use WPA2 encrypted WiFi</li>
 					<li>Change router's default password</li>
 					<li>Use devices on a separate home network</li>
 				</ul>
+				<p><strong style="background:red;">TODO: list of wifi security tips</strong></p>
 			</section>
 
 			<section>
@@ -332,6 +337,7 @@ con.close</code></pre>
 				<ul>
 					<li>cannot rely on device owner's network</li>
 				</ul>
+
 				<img src="images/casestudy1.png" alt="WeMo baby monitor" height=700px>
 			</section>
 
@@ -349,7 +355,11 @@ con.close</code></pre>
 				<ul>
 					<li>username and password are send over clear text</li>
 				</ul>
-			
+
+				<img src="images/open.png" alt="">
+			</section>
+
+			<section>
 				<h2>Demo B: What's the fix?</h2>
 				<ul>
 					<li>use TLS / HTTPS</li>
@@ -387,7 +397,8 @@ while true; do
   sleep 5
 done
 				</code></pre>
-				<img src="images/blackout.png" height=500px>
+				<img src="images/blackout.png" height=400px style="float:left;">
+				<img src="images/lightbulb.png" height=560px>
 			</section>
 
 			<section>
@@ -423,6 +434,8 @@ done
 			<section class="center">
 				<h1>Thanks!</h1>
 				<p>slides: <a href="https://sayan.ee/iot-security-lecture">https://sayan.ee/iot-security-lecture</a></p>
+				<br>
+				<p>demo code:<br> <a href="https://github.com/sayanee/iot-security-lecture/tree/master/demo">github.com/sayanee/iot-security-lecture/tree/master/demo</a></p>
 			</section>
 		</div>
 	</div>
