@@ -24,7 +24,7 @@ function isRPi() {
 
 function setLED(value){
   if (isRPi()) {
-    return led.writeSync(!!value)
+    return led.writeSync(value)
   }
 }
 
@@ -79,7 +79,7 @@ appInsecure.get('/on', function(req, res) {
     res.redirect('/')
   } else {
     console.log(new Date() + ' [HTTP] ' + req.cookies.username + ' turned ON the lamp')
-    setLED(true)
+    setLED(1)
     res.redirect('/action')
   }
 })
@@ -89,7 +89,7 @@ appInsecure.get('/off', function(req, res) {
     res.redirect('/')
   } else {
     console.log(new Date() + ' [HTTP] ' + req.cookies.username + ' turned OFF the lamp')
-    setLED(false)
+    setLED(0)
     res.redirect('/action')
   }
 })
@@ -136,7 +136,7 @@ appSecure.get('/on', function(req, res) {
     res.redirect('/index')
   } else{
     console.log(new Date() + ' [HTTPS] ' + req.cookies.username + ' turned ON the lamp')
-    setLED(true);
+    setLED(1);
     res.redirect('/action')
   }
 })
@@ -146,7 +146,7 @@ appSecure.get('/off', function(req, res) {
     res.redirect('/index')
   } else{
     console.log(new Date() + ' [HTTPS] ' + req.cookies.username + ' turned OFF the lamp')
-    setLED(false);
+    setLED(0);
     res.redirect('/action')
  }
 })
