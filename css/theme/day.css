@@ -234,7 +234,7 @@ body {
  * IMAGES
  *********************************************/
 .reveal section img {
-  margin: 15px 0px; }
+  margin: 0; }
 
 .reveal section img.plain {
   border: 0;

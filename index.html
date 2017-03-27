@@ -267,6 +267,163 @@ con.close</code></pre>
 
 				<p><a href="https://www.owasp.org/images/7/71/Internet_of_Things_Top_Ten_2014-OWASP.pdf">Internet of Things Top Ten</a></p>
 			</section>
+
+			<section class="center">
+				<h1>Adventures with <br>a lamp 💡<br>an oven 📺<br>a router 📻</h1>
+			</section>
+
+			<section>
+				<h2>Review the OWASP Internet of Things Top Ten Project</h2>
+				<ul>
+					<li><strong style="background:#ffda01">I1 Insecure Web Interface</strong></li>
+					<li><strong style="background:#ffda01">I2 Insufficient Authentication/Authorization</strong></li>
+					<li><strong style="background:#ffda01">I3 Insecure Network Services</strong></li>
+					<li>I4 Lack of Transport Encryption</li>
+					<li>I5 Privacy Concerns</li>
+					<li>I6 Insecure Cloud Interface</li>
+					<li>I7 Insecure Mobile Interface</li>
+					<li>I8 Insufficient Security Configurability</li>
+					<li>I9 Insecure Software/Fireware</li>
+					<li>I10 Poor Physical Security</li>
+				</ul>
+
+				<p><a href="https://www.owasp.org/images/7/71/Internet_of_Things_Top_Ten_2014-OWASP.pdf">Internet of Things Top Ten</a></p>
+			</section>
+
+			<section>
+				<h1>3 demos</h1>
+				<img src="images/demo.png" alt="Demo setup" height=500px style="float:left;">
+
+				<h3>Questions to ask 🤔</h3>
+				<p>What's the insecurity?</p>
+				<p>What's the fix?</p>
+				<p>Why should we care?</p>
+				<hr>
+				<h3>People 🕵🏻👩🏾‍🔧👨🏻‍💻👩🏼‍🏭</h3>
+				<p>security researcher</p>
+				<p>home owner</p>
+				<p>engineer / product manager</p>
+			</section>
+
+			<section>
+				<h2>Demo A</h2>
+				<h3>I3 Insecure Network Services</h3>
+				<p>Choose WiFi <strong style="background:#ffda01">ISSS614</strong> 🔊</p>
+				<p>Go to URL <strong style="background:#ffda01">lamp.local</strong> on 📱 💻 🖥</p>
+				<img src="images/welcome.png" alt="Login to lamp" height=1000px>
+			</section>
+
+			<section>
+				<h2>Demo A: What's the insecurity?</h2>
+				<ul>
+					<li>insecure open WiFi</li>
+				</ul>
+				<hr>
+				<h2>Demo A: What's the fix?</h2>
+				<ul>
+					<li>Use WPA2 encrypted WiFi</li>
+					<li>Change router's default password</li>
+					<li>Use devices on a separate home network</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Demo A: Why should we care?</h2>
+				<ul>
+					<li>cannot rely on device owner's network</li>
+				</ul>
+				<img src="images/casestudy1.png" alt="WeMo baby monitor" height=700px>
+			</section>
+
+			<section>
+				<h2>Demo B</h2>
+				<h3>I1 Insecure Web Interface</h3>
+				<p>Choose WiFi <strong style="background:#ffda01">ISSS614</strong> 🔊</p>
+				<p>Go to URL <strong style="background:#ffda01">lamp.local</strong> on 📱 💻 🖥</p>
+				<p>Access oven and sniff packets</p>
+				<img src="images/sniff.png" alt="Sniff packets from oven">
+			</section>
+
+			<section>
+				<h2>Demo B: What's the insecurity?</h2>
+				<ul>
+					<li>username and password are send over clear text</li>
+				</ul>
+			
+				<h2>Demo B: What's the fix?</h2>
+				<ul>
+					<li>use TLS / HTTPS</li>
+				</ul>
+				<img src="images/https.png" alt="use HTTPS / TLS">
+			</section>
+
+			<section>
+				<h2>Demo B: Why should we care?</h2>
+				<ul>
+					<li>private data being sniffed</li>
+				</ul>
+				<img src="images/casestudy2.png" alt="">
+			</section>
+
+			<section>
+				<h2>Demo C</h2>
+				<h3>I2 Insufficient Authentication/Authorization</h3>
+				<p>Go to URL <strong style="background:#ffda01">https://lamp.local</strong> on 📱 💻 🖥</p>
+				<p>Access oven and scan for devices</p>
+				<img src="images/default.png" height=400px>
+			</section>
+
+			<section>
+				<h2>Demo C: What's the insecurity?</h2>
+				<ul>
+					<li>default username and password</li>
+					<li>full control of the device</li>
+				</ul>
+				<p></p>
+				<pre><code class="bash">#!/bin/bash
+
+while true; do
+  echo 0 > /sys/class/gpio/gpio18/value
+  sleep 5
+done
+				</code></pre>
+				<img src="images/blackout.png" height=500px>
+			</section>
+
+			<section>
+				<h2>Demo C: What's the fix?</h2>
+				<ul>
+					<li>prompt users to change default login</li>
+					<li>have a mechanism to remotely update</li>
+				</ul>
+				<img src="images/default-password.png" alt="">
+			</section>
+
+			<section>
+				<h2>Demo C: Why should we care?</h2>
+				<ul>
+					<li>physical infrastructure compromised</li>
+				</ul>
+				<img src="images/casestudy3.png" height=800px>
+			</section>
+
+			<section>
+				<h2>Developing IoT products</h2>
+				<ul>
+					<li>work with security researchers from day 1</li>
+					<li>build a mechanism to remotely patch firmware</li>
+					<li>never rely on the security of device's network</li>
+					<li>interoperability is challenging</li>
+					<li>prompt for changing default login</li>
+					<li>use encryption</li>
+					<li>design to limit the scope of damage</li>
+				</ul>
+			</section>
+
+			<section class="center">
+				<h1>Thanks!</h1>
+				<p>slides: <a href="https://sayan.ee/iot-security-lecture">https://sayan.ee/iot-security-lecture</a></p>
+			</section>
 		</div>
 	</div>
 
