@@ -4,7 +4,7 @@ body { background: #e9e9e9; color: #666; font-family: sans-serif; }
 form, section { border-top: 5px solid teal; background: white; padding: 1em; }
 h1 { text-align: center; margin: 1em 0; }
 label, input { width: 80%; display: block; margin: .5em auto; }
-input { font-size: 1.5em; padding: .5em; }
+input { font-size: 1.5em; padding: .5em; border-radius: 0; -webkit-appearance: none;}
 [type=submit], a { font-size: 1.5em; padding: .5em; background-color: teal; border: none; color: white; }
 a { display: block; margin: 1em 0; text-align: center; text-decoration: none; }
 [type=submit]:active, [type=submit]:hover, a:hover, a:active { background: darkslategray; cursor: pointer; }
