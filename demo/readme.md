@@ -90,7 +90,6 @@
 
     Or Just view the DHCP client list from the router
 
-    ![](img/dhcp-client-list.png)
 1. Secure copy the demo code to RaspberryPI
 
     ```sh
@@ -238,7 +237,13 @@
     Ensure `non super users are able to capture packets`
 
     ![](img/configure-wireshark.png)
-
-
 1. Reboot
 1. Try `tshark -i wlan0 -Y http`
+1. Add the following to `.bashrc` to sniff HTTP POST request passwords sent in clear text
+
+    ```sh
+    alias startsniff='sudo ifconfig wlan0 down && sudo iwconfig wlan0 mode Monitor && sudo ifconfig wlan0 up'
+    alias sniff='tshark -i wlan0 -Y '\''http.request.method == POST and tcp contains "password"'\'' -T fields -e frame.time -e urlencoded-form.value'
+    ```
+
+    ![](img/sniff.png)
