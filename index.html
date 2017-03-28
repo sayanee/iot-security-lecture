@@ -278,7 +278,7 @@ con.close</code></pre>
 					<li><strong style="background:#ffda01">I1 Insecure Web Interface</strong></li>
 					<li><strong style="background:#ffda01">I2 Insufficient Authentication/Authorization</strong></li>
 					<li><strong style="background:#ffda01">I3 Insecure Network Services</strong></li>
-					<li>I4 Lack of Transport Encryption</li>
+					<li><strong style="background:#ffda01">I4 Lack of Transport Encryption</strong></li>
 					<li>I5 Privacy Concerns</li>
 					<li>I6 Insecure Cloud Interface</li>
 					<li>I7 Insecure Mobile Interface</li>
@@ -339,6 +339,43 @@ con.close</code></pre>
 					<li>Use devices on a separate home network</li>
 				</ul>
 				<img src="images/wifi-tips.png" alt="">
+			</section>
+
+			<section>
+				<h2>Demo A (Redux)</h2>
+				<h3>I4 Lack of Transport Encryption</h3>
+				<p>Choose WiFi <strong style="background:#ffda01">ISSS614</strong> 🔊</p>
+				<p>Go to URL <strong style="background:#ffda01">lamp.local</strong> on 📱 💻 🖥</p>
+				<img src="images/welcome.png" alt="Login to lamp" height=1000px>
+			</section>
+
+			<section>
+				<h2>Demo A: What's the insecurity?</h2>
+				<ul class="fragment" data-fragment-index="1">
+					<li>lack of security for HTTP connection</li>
+				</ul>
+				<br><br>
+				<img src="images/chrome-not-secure.png" class="fragment" data-fragment-index="1">
+                                <p class="fragment" data-fragment-index="1">
+                                Read: <a href="https://security.googleblog.com/2016/09/moving-towards-more-secure-web.html">Moving towards a more secure web</a>
+			</section>
+
+			<section>
+				<h2>Demo A: Why should we care?</h2>
+				<ul class="fragment" data-fragment-index="1">
+                                        <li>if you can connect to an encrypted WiFi, you can still eavesdrop</li>
+				</ul>
+                                <br><br>
+				<img src="images/casestudy1b.png" alt="Wireshark" height=400px class="fragment" data-fragment-index="1">
+			</section>
+
+			<section>
+				<h2>Demo A: What's the fix?</h2>
+				<ul class="fragment" data-fragment-index="1">
+					<li>Use SSL</li>
+				</ul>
+                                <p>
+				<img src="images/use-ssl.png" height=500px alt="" class="fragment" data-fragment-index="1">
 			</section>
 
 			<section>
